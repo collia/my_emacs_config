@@ -1,0 +1,139 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Thu Mar  6 12:56:29 2014
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("4004030" "+++++" "++++++++" "00000000" "mw" "A800038" "A800010" "custom" ","))
+(setq regexp-search-ring '("[Ww]ork"))
+(setq register-alist (list (list 119 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (list 'lambda '() (list 'set-marker mk 1233 (get-buffer ".emacs")))) mk))))
+(setq file-name-history '("d:/DATA/emacs/.emacs" "c:/Users/NKlimchuk/AppData/Roaming/.emacs" "d:/DATA/MyProjects/NIKOLA.txt" "d:/Lauterbach/Gilat/u-boot-edited.bin" "d:/DATA/MyProjects/gilat/phy_regs_old.txt" "d:/DATA/MyProjects/gilat/phy_regs_new.txt" "d:/DATA/MyProjects/gilat/check_new_PP_2.txt" "d:/DATA/MyProjects/gilat/CPU_reg_15_New.txt" "d:/DATA/MyProjects/gilat/CPU_reg_1_New.txt" "d:/DATA/MyProjects/gilat/check_old_PP.txt" "d:/DATA/MyProjects/mail.txt" "d:/DATA/MyProjects/aitech.txt" "d:/DATA/MyProjects/imaqliq/web_env/Readme.txt" "d:/DATA/MyProjects/gilat/gilat.txt" "d:/DATA/MyProjects/angstrem/igmp_proxy.txt" "d:/DATA/MyProjects/dhcpv6_option82.txt"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/gilat/gilat.txt"
+  "gilat.txt"
+  'text-mode
+  '(linum-mode)
+  200113
+  '(196778 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos) (overwrite-mode)))
+
+(desktop-create-buffer 206
+  "d:/DATA/emacs/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(auto-complete-mode linum-mode)
+  5908
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-unix)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/NIKOLA.txt"
+  "NIKOLA.txt"
+  'text-mode
+  '(linum-mode)
+  1234
+  '(469 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/Lauterbach/Gilat/u-boot-edited.bin"
+  "u-boot-edited.bin"
+  'hexl-mode
+  '(linum-mode)
+  2286115
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . no-conversion)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/aitech.txt"
+  "aitech.txt"
+  'text-mode
+  '(linum-mode)
+  821
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/gilat/CPU_reg_1_New.txt"
+  "CPU_reg_1_New.txt"
+  'text-mode
+  '(linum-mode)
+  1098423
+  '(42368 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/gilat/check_old_PP.txt"
+  "check_old_PP.txt"
+  'text-mode
+  '(linum-mode)
+  118367
+  '(105685 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/mail.txt"
+  "mail.txt"
+  'text-mode
+  '(linum-mode)
+  44
+  '(41 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/imaqliq/web_env/Readme.txt"
+  "Readme.txt"
+  'text-mode
+  '(linum-mode)
+  1204
+  '(1841 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/angstrem/igmp_proxy.txt"
+  "igmp_proxy.txt"
+  'text-mode
+  '(linum-mode)
+  1188
+  '(1197 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "d:/DATA/MyProjects/dhcpv6_option82.txt"
+  "dhcpv6_option82.txt"
+  'text-mode
+  '(linum-mode)
+  4669
+  '(4669 t)
+  nil
+  nil
+  '((buffer-file-coding-system . koi8-u-dos) (overwrite-mode)))
+

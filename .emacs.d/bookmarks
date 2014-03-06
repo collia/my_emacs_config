@@ -1,0 +1,10 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("work"
+ (filename . "d:/DATA/MyProjects/gilat/gilat.txt")
+ (front-context-string . "new work config\n")
+ (rear-context-string . "+++++++++++++++\n")
+ (position . 51718))
+)
