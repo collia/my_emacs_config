@@ -1,0 +1,10 @@
+
+(defun parse-two-previous-lines ()
+  "Function take two prev lines , compare them and find value to increment"
+)
+
+(defun advans-increment ()
+  "Function analize two prev lines, compare then, find value to increment and write new line"
+  (interactive)
+  (parse-two-previous-lines)
+)
