@@ -169,6 +169,7 @@
 (global-set-key (kbd "C-<f2>") 'bs-kill)
 
 (global-set-key (kbd "C-x r <down>") 'advansed-increment)
+(global-set-key (kbd "C-x r C-<down>") 'advansed-increment-hex)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations
