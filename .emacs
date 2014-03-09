@@ -167,6 +167,8 @@
 
 (global-set-key (kbd "<f2>") 'bs-show)
 (global-set-key (kbd "C-<f2>") 'bs-kill)
+
+(global-set-key (kbd "C-x r <down>") 'advansed-increment)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations
@@ -251,6 +253,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
 (load "~/.emacs.d/parse_stacktrace.el")
+(load "~/.emacs.d/increment.el")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
