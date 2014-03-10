@@ -101,31 +101,3 @@ base can be 'dec 'hex 'oct"
   (interactive "r\nnFirst number: ")
   (fill-rectangle-by-increments-numbers-base start end first-num 'oct))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
