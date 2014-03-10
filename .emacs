@@ -170,6 +170,10 @@
 
 (global-set-key (kbd "C-x r <down>") 'advansed-increment)
 (global-set-key (kbd "C-x r C-<down>") 'advansed-increment-hex)
+
+(global-set-key (kbd "C-x r M-i") 'fill-rectangle-by-increments-numbers)
+(global-set-key (kbd "C-x r M-x") 'fill-rectangle-by-increments-numbers-hex)
+
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations

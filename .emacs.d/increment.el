@@ -59,20 +59,47 @@ base can be 'dec 'hex 'oct"
   (interactive "r")
   (advansed-increment-internal start end 'oct))
 
-    
+
+(defun fill-rectangle-by-increments-numbers-base (start end first-num basis)
+  "Take rectangle and fill it with incremented numbers"
+  (goto-char start)
+  (setq startcol (current-column))
+  (goto-char end)
+  (setq endcol (current-column))
+  (let* ((num-column (abs (- endcol startcol)))
+	(num-row (count-lines start end))
+	(row-counter 0)
+	(num-counter first-num))
+    (goto-char start)
+    (while (< row-counter num-row)
+      (delete-char num-column)
+      (cond
+       ((equal basis 'dec)
+	(insert (format "%d" num-counter)))
+       ((equal basis 'hex)
+	(insert (format "%X" num-counter)))
+       ((equal basis 'oct)
+	(insert (format "%o" num-counter))))
+      (setq row-counter (1+ row-counter))
+      (setq num-counter (1+ num-counter))
+      (next-line)
+      (move-to-column startcol))))
 
 
+(defun fill-rectangle-by-increments-numbers (start end first-num)
+  "Take rectangle and fill it with incremented numbers"
+  (interactive "r\nnFirst number: ")
+  (fill-rectangle-by-increments-numbers-base start end first-num 'dec))
 
+(defun fill-rectangle-by-increments-numbers-hex (start end first-num)
+  "Take rectangle and fill it with incremented numbers"
+  (interactive "r\nnFirst number: ")
+  (fill-rectangle-by-increments-numbers-base start end first-num 'hex))
 
-
-
-
-
-
-
-
-
-
+(defun fill-rectangle-by-increments-numbers-oct (start end first-num)
+  "Take rectangle and fill it with incremented numbers"
+  (interactive "r\nnFirst number: ")
+  (fill-rectangle-by-increments-numbers-base start end first-num 'oct))
 
 
 
