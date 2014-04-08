@@ -1,0 +1,7 @@
+elpa
+*.elc
+**.*~
+*VirtualBox*
+.emacs.d\server\server 
+**.emacs.desktop*
+#*#
