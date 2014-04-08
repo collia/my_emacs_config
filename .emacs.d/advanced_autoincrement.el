@@ -44,11 +44,11 @@
 
 (defun diference-lines (first-line second-line startcol endcol)
   "Copy first part, try to convert val to number, and form next line"
-  (let ((firstnum (string-to-int (substring first-line startcol endcol)))
-	(secondnum (string-to-int (substring second-line startcol endcol))))
-;    (message "Numbers %d %d" firstnum secondnum)
-    (let ((nextnum (+ secondnum (secondnum - firstnum))))
-      (message "%s%d%s" (substring first-line 0 startcol) nextnum (substring first-line endtcol nil)))))
+  (let* ((firstnum (string-to-int (substring first-line startcol endcol)))
+	(secondnum (string-to-int (substring second-line startcol endcol)))
+	(nextnum (+ secondnum (- secondnum firstnum))))
+    (message "Numbers %d %d" firstnum secondnum)
+    (message "%s%d%s" (substring first-line 0 startcol) nextnum (substring first-line endcol nil))))
 
 
 (defun advansed-increment (start end)

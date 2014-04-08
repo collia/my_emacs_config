@@ -128,6 +128,11 @@
 ;; Project manager
 (load-file "~/.emacs.d/eproject-0.4/eproject.el")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Multiple cursors
+(add-to-list 'load-path "~/.emacs.d/multiple-cursors")
+(require 'multiple-cursors)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bindind filetypes
 ;;
@@ -147,15 +152,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Enconding
-(set-language-environment 'UTF-8) 
-(setq default-input-method 'russian-computer) 
-(set-selection-coding-system 'windows-1251) 
-(set-default-coding-systems 'windows-1251) 
-(prefer-coding-system 'windows-1251) 
+(if (eq system-type 'windows-nt)
+  (set-language-environment 'UTF-8) 
+  (setq default-input-method 'russian-computer) 
+  (set-selection-coding-system 'windows-1251) 
+  (set-default-coding-systems 'windows-1251) 
+  (prefer-coding-system 'windows-1251))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Server
 (server-start)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;key-maps
 
@@ -189,6 +197,12 @@
 
 (global-set-key (kbd "C-x r M-i") 'fill-rectangle-by-increments-numbers)
 (global-set-key (kbd "C-x r M-x") 'fill-rectangle-by-increments-numbers-hex)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
