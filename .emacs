@@ -146,6 +146,17 @@
              auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Enconding
+(set-language-environment 'UTF-8) 
+(setq default-input-method 'russian-computer) 
+(set-selection-coding-system 'windows-1251) 
+(set-default-coding-systems 'windows-1251) 
+(prefer-coding-system 'windows-1251) 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Server
+(server-start)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;key-maps
 
 (global-set-key [?\C-c ?d] 'duplicate-line)
@@ -260,6 +271,12 @@
   (delete-other-windows))
 
 
+(defun delete-duplicate-lines (beg end)
+  (interactive "r")
+  (let ((lines (split-string (buffer-substring beg end) "\n")))
+        (delete-region beg end)
+        (insert
+         (mapconcat #'identity (delete-dups lines) "\n")))) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
 (load "~/.emacs.d/parse_stacktrace.el")
@@ -281,3 +298,4 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
