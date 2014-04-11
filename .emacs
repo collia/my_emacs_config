@@ -164,6 +164,10 @@
 ;; Server
 (server-start)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; litable - pretty show of lisp code
+(add-to-list 'load-path "~/.emacs.d/dash")
+(require 'litable)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;key-maps
