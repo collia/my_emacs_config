@@ -169,6 +169,10 @@
 (add-to-list 'load-path "~/.emacs.d/dash")
 (require 'litable)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hightlighting text in all buffer
+(require 'highlight-symbol)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;key-maps
 
@@ -208,6 +212,13 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+(global-set-key [(control f6)] 'highlight-symbol-at-point)
+(global-set-key [f6] 'highlight-symbol-next)
+(global-set-key [(shift f6)] 'highlight-symbol-prev)
+(global-set-key [(meta f6)] 'highlight-symbol-query-replace)
+
 
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
