@@ -168,8 +168,9 @@
             (append
              '(;; File name has no dot.
                ("/[^\\./]*\\'" . fundamental-mode)
-               ;; File name ends in ‘.hs’.
+               ;; File name ends in .hs
                ("\\.hs\\'" . haskell-mode)
+	       ;; emacs config file
                (".emacs" . emacs-lisp-mode)
 	       ("\\.el\\'" . emacs-lisp-mode)
 	       ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
@@ -250,7 +251,8 @@
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 (global-unset-key (kbd "C-x C-F"))
 (global-set-key (kbd "C-x C-F") 'helm-find-files)
-
+(global-unset-key (kbd "C-S"))
+(global-set-key (kbd "C-S") 'helm-occur)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations
