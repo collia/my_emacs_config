@@ -3,7 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Global configurations
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set up the Common Lisp environment
@@ -122,7 +122,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; show opened files
 (require 'bs)
-;;(global-set-key (kbd "<f2>") 'bs-show)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Project manager
@@ -133,6 +132,35 @@
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors")
 (require 'multiple-cursors)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helm
+
+(add-to-list 'load-path "~/.emacs.d/async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm)
+(require 'helm-config)
+
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+;(when (executable-find "curl")
+;  (setq helm-google-suggest-use-curl-p t))
+
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t)
+
+(helm-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bindind filetypes
 ;;
@@ -142,7 +170,6 @@
                ("/[^\\./]*\\'" . fundamental-mode)
                ;; File name ends in ‘.hs’.
                ("\\.hs\\'" . haskell-mode)
-               ;; File name ends in ‘.hs’.
                (".emacs" . emacs-lisp-mode)
 	       ("\\.el\\'" . emacs-lisp-mode)
 	       ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
@@ -219,6 +246,10 @@
 (global-set-key [(shift f6)] 'highlight-symbol-prev)
 (global-set-key [(meta f6)] 'highlight-symbol-query-replace)
 
+(global-unset-key (kbd "C-x C-b"))
+(global-set-key (kbd "C-x C-b") 'helm-mini)
+(global-unset-key (kbd "C-x C-F"))
+(global-set-key (kbd "C-x C-F") 'helm-find-files)
 
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -309,8 +340,8 @@
          (mapconcat #'identity (delete-dups lines) "\n")))) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
-(load "~/.emacs.d/parse_stacktrace.el")
-(load "~/.emacs.d/increment.el")
+(load "~/.emacs.d/lisp/parse_stacktrace.el")
+(load "~/.emacs.d/lisp/increment.el")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -328,4 +359,3 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-
