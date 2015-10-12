@@ -60,9 +60,12 @@
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 (setq vc-handled-backends ())
 
+(setq scroll-error-top-bottom t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autocomplite
+(add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
@@ -172,8 +175,9 @@
                ("\\.hs\\'" . haskell-mode)
 	       ;; emacs config file
                (".emacs" . emacs-lisp-mode)
-	       ("\\.el\\'" . emacs-lisp-mode)
-	       ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
+               ("\\.el\\'" . emacs-lisp-mode)
+               ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
+               ("Makefile" . makefile-mode)
                ;; File name (within directory) starts with a dot.
 	       ("/\\.[^/]*\\'" . fundamental-mode))
              auto-mode-alist))
@@ -247,6 +251,8 @@
 (global-set-key [(shift f6)] 'highlight-symbol-prev)
 (global-set-key [(meta f6)] 'highlight-symbol-query-replace)
 
+(global-set-key (kbd "C-.") 'find-tag-other-window)
+
 (global-unset-key (kbd "C-x C-b"))
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 (global-unset-key (kbd "C-x C-F"))
@@ -265,19 +271,24 @@
 
 ;(slime)
 
+(setq-default indent-spase-mode t)
+(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
+;(defvaralias 'c-basic-offset 'tab-width) 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;functions
 
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-)
- 
+(defun duplicate-line(number)
+  (interactive "p")
+  (dotimes (i number)
+	(move-beginning-of-line 1)
+    (kill-line)
+	(yank)
+	(open-line 1)
+	(next-line 1)
+	(yank)))
+
+
 (defun save-a-copy-as (file-or-directory)
   "Saves a copy of the current buffer in the given directory or file, leaving
    the original file in the buffer, and asking for confirmation before
@@ -340,6 +351,13 @@
         (delete-region beg end)
         (insert
          (mapconcat #'identity (delete-dups lines) "\n")))) 
+
+(defun create-tags (dir-name)
+     "Create tags file."
+     (interactive "DDirectory: ")
+     (eshell-command 
+      (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name))
+     (visit-tags-table (concat dir-name "\TAGS")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
 (load "~/.emacs.d/lisp/parse_stacktrace.el")
@@ -347,6 +365,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ECB config
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

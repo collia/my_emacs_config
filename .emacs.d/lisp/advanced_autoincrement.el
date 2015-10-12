@@ -62,7 +62,19 @@
     (setq startcol (current-column))
     (goto-char end)
     (setq endcol (current-column))
-    (diference-lines first-line second-line startcol endcol)))
+	(setq filtered-first-line 
+		  (with-temp-buffer
+		   (insert first-line)
+		   (set-text-properties (point-min) (point-max) nil)
+		   (buffer-string)))
+	(setq filtered-second-line 
+		  (with-temp-buffer
+		   (insert second-line)
+		   (set-text-properties (point-min) (point-max) nil)
+		   (buffer-string)))
+	(next-line)
+    (insert (diference-lines filtered-first-line filtered-second-line startcol endcol)))
+  (next-line))
 ;    (message "Region has %d lines, %d columns"
 ;	     (count-lines start end) (- endcol startcol))))
 
