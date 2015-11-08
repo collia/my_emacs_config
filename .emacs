@@ -35,7 +35,7 @@
 (setq visible-bell t)
 ;; Remove icons toolbar
 (if (> emacs-major-version 20)
-(tool-bar-mode -1))
+	(tool-bar-mode -1))
 ;; Use y or n instead of yes or not
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; Scrolling with 1 line step
@@ -163,6 +163,12 @@
       helm-ff-file-name-history-use-recentf t)
 
 (helm-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; go-mode
+;;
+(add-to-list 'load-path "~/.emacs.d/lisp/go-mode")
+(require 'go-mode-autoloads)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bindind filetypes
