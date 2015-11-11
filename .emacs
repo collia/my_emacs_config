@@ -53,9 +53,6 @@
 
 (autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
 
-;(add-to-list 'default-frame-alist '(height . 34))
-;(add-to-list 'default-frame-alist '(width . 80))
-
 ;Disable git 
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 (setq vc-handled-backends ())
@@ -87,8 +84,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Font settings
 ;; Options -> Set default font
-;;(add-to-list 'default-frame-alist '(font . "Consolas-14"))
-;;(set-default-font "Consolas-14")
+
+(if (null (x-list-fonts "monofur-12"))
+	(if (null (x-list-fonts "Monoid-12"))
+		(progn
+		  (add-to-list 'default-frame-alist '(font . "Monoid-12"))
+		  (set-default-font "Monoid-12")))
+  (progn
+	(add-to-list 'default-frame-alist '(font . "monofur-12"))
+	(set-default-font "monofur-12")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autoload
