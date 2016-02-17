@@ -63,7 +63,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autocomplite
 (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1/")
-(require 'auto-complete-config)
+(require 'auto-complete-config)                           
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
@@ -86,13 +86,14 @@
 ;; Options -> Set default font
 
 (if (null (x-list-fonts "monofur-12"))
-	(if (null (x-list-fonts "Monoid-12"))
-		(progn
-		  (add-to-list 'default-frame-alist '(font . "Monoid-12"))
-		  (set-default-font "Monoid-12")))
+    (if (null (x-list-fonts "Monoid-12"))
+	(message "No good fonts on system")
+      (progn
+	(add-to-list 'default-frame-alist '(font . "Monoid-12"))
+	(set-default-font "Monoid-12")))
   (progn
-	(add-to-list 'default-frame-alist '(font . "monofur-12"))
-	(set-default-font "monofur-12")))
+    (add-to-list 'default-frame-alist '(font . "monofur-12"))
+    (set-default-font "monofur-12")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autoload
