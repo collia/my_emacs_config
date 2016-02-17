@@ -35,7 +35,7 @@
 (setq visible-bell t)
 ;; Remove icons toolbar
 (if (> emacs-major-version 20)
-	(tool-bar-mode -1))
+(tool-bar-mode -1))
 ;; Use y or n instead of yes or not
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; Scrolling with 1 line step
@@ -63,7 +63,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autocomplite
 (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1/")
-(require 'auto-complete-config)                           
+(require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
@@ -190,7 +190,7 @@
                ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
                ("Makefile" . makefile-mode)
                ;; File name (within directory) starts with a dot.
-	       ("/\\.[^/]*\\'" . fundamental-mode))
+               ("/\\.[^/]*\\'" . fundamental-mode))
              auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -278,26 +278,30 @@
 			(c++-mode . "bsd")
 			(awk-mode . "awk")
 			(other . "free-group-style")))
- 
 
 ;(slime)
 
 (setq-default indent-spase-mode t)
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
 ;(defvaralias 'c-basic-offset 'tab-width) 
+(setq-default indent-tabs-mode nil)
+;(setq-default indent-tabs-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;functions
 
 (defun duplicate-line(number)
+  "Function copies current line and pastyes it"
   (interactive "p")
-  (dotimes (i number)
-	(move-beginning-of-line 1)
-    (kill-line)
-	(yank)
-	(open-line 1)
-	(next-line 1)
-	(yank)))
+  (let* ((copy-buffer (x-get-clipboard)))
+    (dotimes (i number)
+      (move-beginning-of-line 1)
+      (kill-line)
+      (yank)
+      (open-line 1)
+      (next-line 1)
+      (yank))
+    (kill-new copy-buffer)))
 
 
 (defun save-a-copy-as (file-or-directory)
@@ -363,12 +367,33 @@
         (insert
          (mapconcat #'identity (delete-dups lines) "\n")))) 
 
+
 (defun create-tags (dir-name)
      "Create tags file."
      (interactive "DDirectory: ")
      (eshell-command 
       (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name))
      (visit-tags-table (concat dir-name "\TAGS")))
+(defun revert-all-buffers ()
+  "Go on all buffers with text ant try to revert it"
+  (interactive)
+  (save-excursion
+    (let* ((curr-bf (current-buffer)))
+      (dolist (buffer (buffer-list))
+        (if (buffer-file-name buffer)
+            (progn
+              (switch-to-buffer buffer)
+              (revert-buffer t t t))))
+      (switch-to-buffer curr-bf))))
+
+(defun insert-tab ()
+  "Insert in current plase tab symbol"
+  (interactive)
+  (setq-default indent-tabs-mode t)
+  (insert "\t")
+  (setq-default indent-tabs-mode nil))
+  
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
 (load "~/.emacs.d/lisp/parse_stacktrace.el")
