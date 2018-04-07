@@ -1,4 +1,7 @@
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Print system information
+(message (format "Sytem is %s" system-type))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Global configurations
@@ -35,15 +38,13 @@
 (setq visible-bell t)
 ;; Remove icons toolbar
 (if (> emacs-major-version 20)
-(tool-bar-mode -1))
+    (tool-bar-mode -1))
 ;; Use y or n instead of yes or not
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; Scrolling with 1 line step
 (setq scroll-step 1)
 ;; Highlight current line
 (global-hl-line-mode 1)
-;; 
-(iswitchb-mode 1)
 ;; show column number
 (column-number-mode t)
 
@@ -85,15 +86,16 @@
 ;; Font settings
 ;; Options -> Set default font
 
-(if (null (x-list-fonts "monofur-12"))
-    (if (null (x-list-fonts "Monoid-12"))
-	(message "No good fonts on system")
+(if (eq system-type 'gnu/linux)
+    (if (null (x-list-fonts "monofur-12"))
+        (if (null (x-list-fonts "Monoid-12"))
+            (message "No good fonts on system")
+          (progn
+            (add-to-list 'default-frame-alist '(font . "Monoid-12"))
+	        (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-*-*-*-*-m-0-iso10646-1")))
       (progn
-	(add-to-list 'default-frame-alist '(font . "Monoid-12"))
-	(set-default-font "Monoid-12")))
-  (progn
-    (add-to-list 'default-frame-alist '(font . "monofur-12"))
-    (set-default-font "monofur-12")))
+        (add-to-list 'default-frame-alist '(font . "monofur-16"))
+        (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autoload
@@ -111,7 +113,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;haskell-mode
 (add-to-list 'load-path "~/.emacs.d/haskell-mode/")
-(require 'haskell-mode-autoloads)
+(require 'haskell-mode)
 (add-to-list 'Info-default-directory-list "~/.emacs.d/haskell-mode/")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
@@ -184,7 +186,7 @@
                ("/[^\\./]*\\'" . fundamental-mode)
                ;; File name ends in .hs
                ("\\.hs\\'" . haskell-mode)
-	       ;; emacs config file
+               ;; emacs config file
                (".emacs" . emacs-lisp-mode)
                ("\\.el\\'" . emacs-lisp-mode)
                ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
