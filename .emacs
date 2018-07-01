@@ -192,7 +192,9 @@
                ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
                ("Makefile" . makefile-mode)
                ;; File name (within directory) starts with a dot.
-               ("/\\.[^/]*\\'" . fundamental-mode))
+               ("/\\.[^/]*\\'" . fundamental-mode)
+               ;; File name ends in .pl is prolog
+               ("\\.pl\\'" . prolog-mode))
              auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
