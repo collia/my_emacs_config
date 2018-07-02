@@ -1,6 +1,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Print system information
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (message (format "Sytem is %s" system-type))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -87,15 +94,25 @@
 ;; Options -> Set default font
 
 (if (eq system-type 'gnu/linux)
-    (if (null (x-list-fonts "monofur-12"))
+    (if (null (x-list-fonts "monofur-16"))
         (if (null (x-list-fonts "Monoid-12"))
             (message "No good fonts on system")
           (progn
             (add-to-list 'default-frame-alist '(font . "Monoid-12"))
-	        (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-*-*-*-*-m-0-iso10646-1")))
+            (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-*-*-*-*-m-0-iso10646-1")))
       (progn
         (add-to-list 'default-frame-alist '(font . "monofur-16"))
-        (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1"))))
+        (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1")))
+  (if (eq system-type 'windows-nt)
+      (if (null (x-list-fonts "monofur-16"))
+          (if (null (x-list-fonts "Monoid-12"))
+              (message "No good fonts on system")
+            (progn
+              (add-to-list 'default-frame-alist '(font . "Monoid-12"))
+              (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-*-*-*-*-m-0-iso10646-1")))
+        (progn
+          (add-to-list 'default-frame-alist '(font . "monofur-16"))
+          (set-face-font 'default "-outline-monofur-normal-normal-normal-mono-*-110-*-*-c-*-iso8859-5")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autoload
