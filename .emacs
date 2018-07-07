@@ -99,10 +99,10 @@
             (message "No good fonts on system")
           (progn
             (add-to-list 'default-frame-alist '(font . "Monoid-12"))
-            (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-*-*-*-*-m-0-iso10646-1")))
+            (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-14-*-*-*-m-0-iso10646-1")))
       (progn
         (add-to-list 'default-frame-alist '(font . "monofur-16"))
-        (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1")))
+        (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")))
   (if (eq system-type 'windows-nt)
       (if (null (x-list-fonts "fira code-12"))
           (if (null (x-list-fonts "monofur-16"))
@@ -356,7 +356,9 @@
                ;; File name (within directory) starts with a dot.
                ("/\\.[^/]*\\'" . fundamental-mode)
                ;; File name ends in .pl is prolog
-               ("\\.pl\\'" . prolog-mode))
+               ("\\.pl\\'" . prolog-mode)
+               ;; File name ends in .go is golang
+               ("\\.go\\'" . go-mode))
              auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
