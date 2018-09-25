@@ -193,6 +193,14 @@
 (helm-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Line delimiter
+;;
+(add-to-list 'load-path "~/.emacs.d/plugins")
+(require 'wide-column)
+
+(add-hook 'c-mode-hook
+                #'wide-column-mode)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Ligatures for developing
 ;;
 
@@ -331,7 +339,7 @@
         (font-lock-add-keywords nil fira-code-font-lock-keywords-alist))
 
       (add-hook 'prog-mode-hook
-                #'add-fira-code-symbol-keywords)))
+                  #'add-fira-code-symbol-keywords)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; go-mode
@@ -453,6 +461,7 @@
 			(other . "free-group-style")))
 
 ;(slime)
+(setq-default c-basic-offset 4)
 
 (setq-default indent-spase-mode t)
 (setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
