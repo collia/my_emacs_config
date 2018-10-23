@@ -585,16 +585,20 @@
      (eshell-command 
       (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name))
      (visit-tags-table (concat dir-name "\TAGS")))
+
 (defun revert-all-buffers ()
   "Go on all buffers with text ant try to revert it"
   (interactive)
   (save-excursion
     (let* ((curr-bf (current-buffer)))
       (dolist (buffer (buffer-list))
-        (if (buffer-file-name buffer)
-            (progn
-              (switch-to-buffer buffer)
-              (revert-buffer t t t))))
+        (let ((filen (buffer-file-name buffer)))
+          (if (not (eq filen nil))
+              (if (file-exists-p filen)
+                  (progn
+                    (switch-to-buffer buffer)
+                    (revert-buffer t t t))
+                (message (format "File %s no longer exists!" filen))))))
       (switch-to-buffer curr-bf))))
 
 (defun insert-tab ()
