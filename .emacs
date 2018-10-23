@@ -381,8 +381,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Server
-(if (eq `server-process nil)
-    (server-start))
+(if (version< emacs-version "27")
+    (server-start)
+  (if (eq server-process nil)
+      (server-start)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; litable - pretty show of lisp code
