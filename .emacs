@@ -395,6 +395,33 @@
 ;; hightlighting text in all buffer
 (require 'highlight-symbol)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;cscope
+
+(require 'xcscope)
+
+
+(add-hook 'c-mode-hook
+          (progn 
+            (define-key global-map [(ctrl f7)] 'cscope-find-this-symbol)
+            (define-key global-map [(f7)] 'cscope-find-global-definition)
+
+            (define-key global-map [(ctrl f10)] 'cscope-find-called-functions)
+            (define-key global-map [(f10)] 'cscope-find-functions-calling-this-function)
+            (define-key global-map [(ctrl f11)] 'cscope-find-assignments-to-this-symbol)
+            (define-key global-map [(f11)] 'cscope-find-files-including-file)
+            (define-key global-map [(f12)] 'cscope-set-initial-directory)
+            (define-key global-map [(ctrl f12)] 'cscope-unset-initial-directory)))
+
+;(define-key global-map [(meta f9)] 'cscope-display-buffer)
+;(define-key global-map [(meta f10)] 'cscope-display-buffer-toggle) 
+;(define-key global-map [(ctrl f7)] 'cscope-find-global-definition-no-prompting)
+;(define-key global-map [(ctrl f8)] 'cscope-pop-mark)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;snippets
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;key-maps
 
@@ -414,8 +441,8 @@
 ;(global-set-key [f3] 'open-slime-setup)
 ;(global-set-key [M-f3] 'close-slime-setup)
 
-(global-set-key [f7] 'compile)
-(global-set-key [f11] 'gdb)
+;(global-set-key [f7] 'compile)
+;(global-set-key [f11] 'gdb)
 
 
 (global-set-key (kbd "C-c o") 'occur)
@@ -577,6 +604,13 @@
   (insert "\t")
   (setq-default indent-tabs-mode nil))
   
+(defun cscope-update-database ()
+  "Run shell commands in root of eproject"
+  (interactive)
+  (if (not (eq prj-directory nil))
+      (let* ((cmd (format "cd %s && git ls-files --recurse-submodules | grep '[\.c|\.h]$' | grep -v ' - ' > cscope.files && cscope -b -q -k -F cscope.files" prj-directory)))
+        (start-process-shell-command "cscope.files update" nil cmd))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load files with my plugins
