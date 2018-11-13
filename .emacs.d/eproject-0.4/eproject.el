@@ -761,16 +761,17 @@ do not belong to  project files"
           (setcdr fn `(() (interactive) (prj-run-tool ',a)))
           (setq n (1+ n))
           (when (setq s (caddr a))
-            (define-key map (prj-parse-key s) (and f fn))
+            (define-key map (kbd s) (and f fn))
             ))))
     (define-key map [f5] 'eproject-setup-toggle)
     ))
-
+;   (define-key map (prj-parse-key s) (and f fn))
 (defun prj-parse-key (s)
   (read
    (if (string-match "[a-z][a-z0-9]+$" s)
        (concat "[" s "]")
-       (concat "\"\\" s "\""))))
+       (concat "\"" s "\""))))
+;       (concat "\"\\" s "\""))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set menus
