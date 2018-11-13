@@ -77,17 +77,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Color theme
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
-(require 'color-theme)
-(color-theme-initialize)
-;(color-theme-gnome2)
-;(color-theme-wheat)
-;(color-theme-taming-mr-arneson)
-;(color-theme-word-perfect)
-(color-theme-aalto-light)
 
-;;(set-background-color "#333333")
-;;(set-foreground-color "#ffffff")
+(load-theme 'tango-dark)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Font settings
