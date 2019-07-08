@@ -422,7 +422,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;key-maps
 
-(global-set-key [?\C-c ?d] 'duplicate-line)
+(global-set-key [?\C-c ?c] 'duplicate-line)
 
 (global-set-key (kbd "<f8>") 'ispell-word)
 (global-set-key (kbd "C-<f8>") 'flyspell-mode)
@@ -476,7 +476,7 @@
 ;
 (global-set-key [f8] 'serial-term)
 
-
+(global-set-key (kbd "C-<tab>")  'insert-tab)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations
@@ -487,11 +487,10 @@
 			(other . "free-group-style")))
 
 ;(slime)
-(setq-default c-basic-offset 4)
 
+(setq-default c-basic-offset 4)
 (setq-default indent-spase-mode t)
-(setq-default tab-width 4) ; Assuming you want your tabs to be four spaces wide
-;(defvaralias 'c-basic-offset 'tab-width) 
+(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 ;(setq-default indent-tabs-mode t)
 
@@ -597,6 +596,21 @@
                     (revert-buffer t t t))
                 (message (format "File %s no longer exists!" filen))))))
       (switch-to-buffer curr-bf))))
+
+(defun kill-all-nonexists-buffers ()
+  "Go on all buffers with text ant try to revert it"
+  (interactive)
+  (save-excursion
+    (let* ((curr-bf (current-buffer)))
+      (dolist (buffer (buffer-list))
+        (let ((filen (buffer-file-name buffer)))
+          (if (not (eq filen nil))
+              (if (not (file-exists-p filen))
+                  (progn
+                    (message (format "File %s no longer exists!" filen))
+                    (kill-buffer buffer))))))
+      (switch-to-buffer curr-bf))))
+
 
 (defun insert-tab ()
   "Insert in current plase tab symbol"
