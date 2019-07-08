@@ -386,6 +386,12 @@
 ;; hightlighting text in all buffer
 (require 'highlight-symbol)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hightlighting unprinted symbols
+(require 'highlight-chars)
+
+(hc-toggle-highlight-tabs)
+(hc-toggle-highlight-trailing-whitespace)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;cscope
 
