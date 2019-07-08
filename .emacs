@@ -390,8 +390,8 @@
 ;; hightlighting unprinted symbols
 (require 'highlight-chars)
 
-(hc-toggle-highlight-tabs)
-(hc-toggle-highlight-trailing-whitespace)
+;(hc-toggle-highlight-tabs)
+;(hc-toggle-highlight-trailing-whitespace)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;cscope
 
@@ -478,13 +478,18 @@
 
 (global-set-key (kbd "C-<tab>")  'insert-tab)
 
+(global-set-key (kbd "<f9>") '(lambda () (interactive)
+                                (progn
+                                  (hc-toggle-highlight-tabs)
+                                  (hc-toggle-highlight-trailing-whitespace))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Code style configurations
 
 (setq c-default-style '((c-mode . "bsd")
-			(c++-mode . "bsd")
-			(awk-mode . "awk")
-			(other . "free-group-style")))
+            (c++-mode . "bsd")
+            (awk-mode . "awk")
+            (other . "free-group-style")))
 
 ;(slime)
 
