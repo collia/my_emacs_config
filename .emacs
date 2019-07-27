@@ -372,10 +372,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Server
-(if (version< emacs-version "27")
-    (server-start)
+(if (version< emacs-version "25")
   (if (eq server-process nil)
-      (server-start)))
+      (server-start))
+  (server-start))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; litable - pretty show of lisp code
@@ -494,6 +494,7 @@
 ;(slime)
 
 (setq-default c-basic-offset 4)
+
 (setq-default indent-spase-mode t)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
