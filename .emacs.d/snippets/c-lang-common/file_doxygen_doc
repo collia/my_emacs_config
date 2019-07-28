@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# contributor: Nikolay collia@email.ua
+# name: File Doxygen Doc
+# key: file.doxy
+# group: doxygen
+# --
+/**
+  * @file    `(buffer-name)`
+  * @author  Nikolay
+  * @version ${1:version}
+  * @date    `(format-time-string "%Y-%m-%d")`
+  * @brief   ${2:brif description}
+  *
+  * ${3:detailed description}
+  */

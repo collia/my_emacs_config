@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# contributor: Nikolay collia@email.ua
+# name: Function Doxygen Doc
+# key: doxy
+# group: doxygen
+# --
+/**
+ * @brief         ${1:function description}
+ * @details       ${2:detailed description}
+ * @param[in]     ${3:paramin}
+ * @param[in/out] ${4:param}
+ * @param[out]    ${5:param}
+ *
+ * @return        ${4:return type}
+ */
