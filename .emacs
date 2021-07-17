@@ -59,7 +59,6 @@
         (define-key query-replace-map [return] 'act)
         (define-key query-replace-map [?\C-m] 'act)
 
-(autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
 
 ;Disable git 
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
@@ -167,7 +166,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Helm
 
-(add-to-list 'load-path "~/.emacs.d/async")
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 (require 'helm)
 (require 'helm-config)
@@ -360,7 +359,6 @@
                ;; emacs config file
                (".emacs" . emacs-lisp-mode)
                ("\\.el\\'" . emacs-lisp-mode)
-               ("\\.\\(frm\\|bas\\|cls\\|ebs\\)$" . visual-basic-mode)
                ("Makefile" . makefile-mode)
                ;; File name (within directory) starts with a dot.
                ("/\\.[^/]*\\'" . fundamental-mode)
