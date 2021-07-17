@@ -70,7 +70,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Autocomplite
-(add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1/")
+(add-to-list 'load-path "~/.emacs.d/popup-el/")
+(add-to-list 'load-path "~/.emacs.d/auto-complete/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 
@@ -99,9 +100,9 @@
             (message "No good fonts on system")
           (progn
             (add-to-list 'default-frame-alist '(font . "Monoid-12"))
-            (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-14-*-*-*-m-0-iso10646-1")))
+            (set-face-font 'default "-PfEd-Monoid-normal-normal-semicondensed-*-16-*-*-*-m-0-iso10646-1")))
       (progn
-        (add-to-list 'default-frame-alist '(font . "monofur-16"))
+        (add-to-list 'default-frame-alist '(font . "monofur-14"))
         (set-face-font 'default "-unknown-monofur-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")))
   (if (eq system-type 'windows-nt)
       (if (null (x-list-fonts "fira code-12"))
@@ -667,3 +668,5 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+(message "Config file loaded")

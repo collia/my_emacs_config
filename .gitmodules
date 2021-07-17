@@ -1,0 +1,12 @@
+[submodule ".emacs.d/slime"]
+	path = .emacs.d/slime
+	url = https://github.com/slime/slime.git
+[submodule ".emacs.d/auto-complete"]
+	path = .emacs.d/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule ".emacs.d/haskell-mode"]
+	path = .emacs.d/haskell-mode
+	url = https://github.com/haskell/haskell-mode.git
+[submodule ".emacs.d/popup-el"]
+	path = .emacs.d/popup-el
+	url = https://github.com/auto-complete/popup-el.git
