@@ -345,8 +345,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; go-mode
 ;;
-(add-to-list 'load-path "~/.emacs.d/lisp/go-mode")
-(require 'go-mode-autoloads)
+(add-to-list 'load-path "~/.emacs.d/go-mode")
+(autoload 'go-mode "go-mode" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bindind filetypes

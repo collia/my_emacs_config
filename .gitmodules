@@ -19,3 +19,6 @@
 [submodule ".emacs.d/multiple-cursors.el"]
 	path = .emacs.d/multiple-cursors.el
 	url = https://github.com/magnars/multiple-cursors.el.git
+[submodule ".emacs.d/go-mode.el"]
+	path = .emacs.d/go-mode.el
+	url = https://github.com/dominikh/go-mode.el.git
