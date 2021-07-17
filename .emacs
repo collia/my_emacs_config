@@ -389,7 +389,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; litable - pretty show of lisp code
-(add-to-list 'load-path "~/.emacs.d/dash")
+(add-to-list 'load-path "~/.emacs.d/dash.el")
 (require 'litable)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
